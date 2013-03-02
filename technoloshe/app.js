@@ -4,7 +4,8 @@
  */
 
 var express = require('express')
-  , routes = require('./routes');
+  , routes = require('./routes')
+  , chart = require('./routes/chart');
 
 var app = module.exports = express.createServer();
 
@@ -42,6 +43,9 @@ express.compiler.compilers.less.compile = function(str, fn){
 // Routes
 
 app.get('/', routes.index);
+app.get('/chart', function(req, res) {
+  res.sendfile(__dirname + '/public/chart.html');
+}); 
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
