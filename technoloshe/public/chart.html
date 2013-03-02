@@ -9,9 +9,7 @@
 		var query = new google.visualization.Query(
         'http://www.google.com/fusiontables/gvizdata?tq=');
 
-		/*query.setQuery("SELECT Year, 'Female Bachelor CS Degrees Awarded', 'Male Bachelor CS Degrees Awarded' FROM 1zB07PNMUU_QXbhdDSEQK2ZXsDKJ4xzSzpIWtD5w");*/
-
-		query.setQuery("SELECT Year, 'Male CS Masters Degrees Awarded', 'Female CS Masters Degrees Awarded', 'Male Bachelors CS Degrees Awarded', 'Female Bachelors CS Degrees Awarded', 'Female CS Doctoral Degrees Awarded', 'Male CS Doctoral Degrees Awarded' FROM 19BHCirpgrwwf3kApPJmEp6Udii2oVvYxBl0J_K4");
+		query.setQuery("SELECT Year, 'Male CS Masters Degrees Awarded', 'Female CS Masters Degrees Awarded', 'Male Bachelors CS Degrees Awarded', 'Female Bachelors CS Degrees Awarded', 'Female CS Doctoral Degrees Awarded', 'Male CS Doctoral Degrees Awarded' FROM 1SVdVghtnXav08O9k_GGBvPDSM1xB9bAa9CgBJEg");
 		query.send(handleQueryResponse);
     }
 
