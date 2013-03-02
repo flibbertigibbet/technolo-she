@@ -2,61 +2,29 @@
   <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart", 'controls']});
+      google.load("visualization", "1", {packages:["corechart"]});
 
       function drawVisualization() {
+      var queryText = encodeURIComponent("SELECT Year, 'Male CS Masters Degrees Awarded', 'Female CS Masters Degrees Awarded', 'Male Bachelors CS Degrees Awarded', 'Female Bachelors CS Degrees Awarded', 'Female CS Doctoral Degrees Awarded', 'Male CS Doctoral Degrees Awarded' FROM 1SVdVghtnXav08O9k_GGBvPDSM1xB9bAa9CgBJEg");
 
-		var query = new google.visualization.Query(
-        'http://www.google.com/fusiontables/gvizdata?tq=');
-
-		query.setQuery("SELECT Year, 'Male CS Masters Degrees Awarded', 'Female CS Masters Degrees Awarded', 'Male Bachelors CS Degrees Awarded', 'Female Bachelors CS Degrees Awarded', 'Female CS Doctoral Degrees Awarded', 'Male CS Doctoral Degrees Awarded' FROM 1SVdVghtnXav08O9k_GGBvPDSM1xB9bAa9CgBJEg");
-		query.send(handleQueryResponse);
-    }
-
-	function handleQueryResponse(response) {
-		if (response.isError()) {
-		  alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-		  return;
-		}
-
-		// Create a dashboard.
-        var dashboard = new google.visualization.Dashboard(
-            document.getElementById('visualization_div'));
-
-		var pickSeries = new google.visualization.ControlWrapper({
-		  'controlType': 'CategoryFilter',
-          'containerId': 'filter_div',
-          'options': {
-            'filterColumnLabel': 'Year'
-          }
-        });
-
-		var data = response.getDataTable();
-
-		var lineChart = new google.visualization.ChartWrapper({
-        "containerId": "chart_div",
+      google.visualization.drawChart({
+        "containerId": "visualization_div",
+        "dataSourceUrl": 'http://www.google.com/fusiontables/gvizdata?tq=',
+        "query":"SELECT Year, 'Male CS Masters Degrees Awarded', 'Female CS Masters Degrees Awarded', 'Male Bachelors CS Degrees Awarded', 'Female Bachelors CS Degrees Awarded', 'Female CS Doctoral Degrees Awarded', 'Male CS Doctoral Degrees Awarded' FROM 1SVdVghtnXav08O9k_GGBvPDSM1xB9bAa9CgBJEg",
         "refreshInterval": 5,
         "chartType": "LineChart",
         "options": {
           "title":"Yearly US Computer Science Bachelor's Degrees Awarded by Sex",
           "hAxis": {"title": "Year"},
-          "vAxis": {"title": "Total Degrees Awarded"}
+          "vAxis": {"title": "CS Bachelor's Degrees Awarded"}
         }
       });
-
-	  dashboard.bind(pickSeries, lineChart);
-	  dashboard.draw(data);
-	}
+    }
 
     google.setOnLoadCallback(drawVisualization);
   </script>
 </head>
 <body style="font-family: Arial;border: 0 none;">
-  <div id="visualization_div" style="width: 1200px; height: 500px;">
-	<!--Divs that will hold each control and chart-->
-      <div id="filter_div"></div>
-      <div id="chart_div" style="width: 1000px; height: 500px;"></div>
-</div>
+  <div id="visualization_div" style="width: 1000px; height: 500px;"></div>
 </body>
 </html>
-
