@@ -9,7 +9,9 @@
 		var query = new google.visualization.Query(
         'http://www.google.com/fusiontables/gvizdata?tq=');
 
-		query.setQuery("SELECT Year, 'Female Bachelor CS Degrees Awarded', 'Male Bachelor CS Degrees Awarded' FROM 1zB07PNMUU_QXbhdDSEQK2ZXsDKJ4xzSzpIWtD5w");
+		/*query.setQuery("SELECT Year, 'Female Bachelor CS Degrees Awarded', 'Male Bachelor CS Degrees Awarded' FROM 1zB07PNMUU_QXbhdDSEQK2ZXsDKJ4xzSzpIWtD5w");*/
+
+		query.setQuery("SELECT Year, 'Male CS Masters Degrees Awarded', 'Female CS Masters Degrees Awarded', 'Male Bachelors CS Degrees Awarded', 'Female Bachelors CS Degrees Awarded' FROM 109_dv43odttpo2rrgvTOeBlBl5cPguagccQhbeM");
 		query.send(handleQueryResponse);
     }
 
@@ -52,10 +54,10 @@
   </script>
 </head>
 <body style="font-family: Arial;border: 0 none;">
-  <div id="visualization_div" style="width: 800px; height: 400px;">
+  <div id="visualization_div" style="width: 1000px; height: 500px;">
 	<!--Divs that will hold each control and chart-->
       <div id="filter_div"></div>
-      <div id="chart_div" style="width: 600px; height: 400px;"></div>
+      <div id="chart_div" style="width: 800px; height: 500px;"></div>
 </div>
 </body>
 </html>
